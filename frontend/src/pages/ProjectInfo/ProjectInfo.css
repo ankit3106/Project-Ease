@@ -1,0 +1,78 @@
+.projectinfo-container {
+  padding: 32px 24px;
+  background: #f7fafc;
+  border-radius: 18px;
+  box-shadow: 0 6px 32px rgba(44, 62, 80, 0.10);
+  margin: 24px 0;
+}
+
+.projectinfo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  margin-bottom: 18px;
+}
+
+.projectinfo-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #3498db;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+}
+
+.projectinfo-description {
+  color: #555;
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+}
+
+.projectinfo-meta-group {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 6px;
+}
+
+.projectinfo-meta-label {
+  font-weight: 600;
+  color: #666;
+  font-size: 1rem;
+}
+
+.projectinfo-meta-value {
+  color: #222;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.projectinfo-divider {
+  margin: 24px 0;
+  border-bottom: 1.5px solid #e3e3e3;
+}
+
+.projectinfo-tabs .ant-tabs-tab {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.projectinfo-tabs .ant-tabs-tab-active {
+  color: #3498db !important;
+}
+
+.projectinfo-tabs .ant-tabs-ink-bar {
+  background: #3498db;
+}
+
+@media (max-width: 900px) {
+  .projectinfo-container {
+    padding: 12px 2px;
+  }
+  .projectinfo-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

@@ -1,0 +1,58 @@
+.notification-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem; /* 20px */
+  margin-top: 1.25rem; /* 20px */
+}
+
+.notification-delete-all {
+  font-size: 15px;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #e74c3c;
+  transition: color 0.2s;
+}
+
+.notification-delete-all:hover {
+  color: #c0392b;
+}
+
+.notification-empty {
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+  color: #888;
+}
+
+.notification-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border: 1px solid #dbeafe;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #f9fafb;
+  transition: box-shadow 0.2s, background 0.2s;
+}
+
+.notification-item:hover {
+  background: #e3f0fa;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+}
+
+.notification-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.notification-description {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.notification-time {
+  font-size: 0.9rem;
+  color: #888;
+}

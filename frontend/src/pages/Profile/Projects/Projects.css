@@ -1,0 +1,95 @@
+.projects-container {
+  padding: 32px 16px;
+  background: #f6f8fa;
+  min-height: 100vh;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(44, 62, 80, 0.06);
+}
+
+.projects-table {
+  margin-top: 24px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(44, 62, 80, 0.08);
+  overflow: hidden;
+}
+
+.projects-name{
+  cursor: pointer;
+  color: #4b6cb7;
+  font-weight: 600;
+  transition: color 0.2s;
+  margin-bottom: 2px;
+}
+
+.projects-add-button {
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #2e3840 0%, #4b6cb7 100%) !important;
+  color: #fff !important;
+  font-weight: 700;
+  border: none !important;
+  border-radius: 10px !important;
+  padding: 10px 24px !important;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.projects-add-button:hover,
+.projects-add-button:focus {
+  background: linear-gradient(90deg, #4b6cb7 0%, #2e3840 100%) !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.16);
+  transform: scale(1.05);
+}
+
+.projects-action-icons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.projects-action-icons i {
+  cursor: pointer;
+  font-size: 20px;
+  color: #4b6cb7;
+  background: #f3f4f6;
+  border-radius: 50%;
+  padding: 8px;
+  transition: color 0.2s, background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(44, 62, 80, 0.06);
+}
+
+.projects-action-icons i:hover {
+  color: #fff;
+  background: #2e3840;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);
+}
+
+.ant-table-thead>tr>th {
+  background: #f3f4f6 !important;
+  font-weight: 700;
+  color: #2e3840;
+  font-size: 1.05rem;
+}
+
+.ant-table-tbody>tr>td {
+  font-size: 1rem;
+  color: #2e3840;
+  background: #fff;
+}
+
+@media (max-width: 600px) {
+  .projects-container {
+    padding: 12px 2px;
+  }
+
+  .projects-table {
+    border-radius: 8px;
+  }
+
+  .projects-add-button {
+    padding: 8px 12px;
+    font-size: 0.95rem;
+  }
+}
