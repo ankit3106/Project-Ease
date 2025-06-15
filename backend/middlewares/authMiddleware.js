@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
     }
     const token = authHeader.split(" ")[1];
     const decryptedToken = jwt.verify(token, process.env.JWT_SECRET);
-    req.userId = decryptedToken.userId; // <-- use req.userId, not req.body.userId
+    req.userId = decryptedToken.userId; 
     next();
   } catch (error) {
     res.status(401).send({

@@ -22,10 +22,12 @@ const taskSchema = new mongoose.Schema(
     assignedTo: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "users",
+      required: true,
     },
     assignedBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "users",
+      required: true,
     },
     attachments: {
       type: Array,
