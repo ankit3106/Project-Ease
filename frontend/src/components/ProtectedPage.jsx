@@ -68,7 +68,6 @@ function ProtectedPage({ children }) {
     return (
         user && (
             <div>
-                {/* Modern Header */}
                 <div className="protected-header">
                     <h1 className="protected-title" onClick={() => navigate("/")}>
                         Project-Ease
