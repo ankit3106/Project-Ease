@@ -4,6 +4,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SetLoading } from "../../../redux/loadersSlice";
 import { CreateProject, EditProject } from "../../../apicalls/projects";
+import { socket } from "../../../socket";
 import "./ProjectForm.css";
 
 const ProjectForm = ({ show, setShow, reloadData, project }) => {
@@ -20,6 +21,12 @@ const ProjectForm = ({ show, setShow, reloadData, project }) => {
                 // edit project
                 values._id = project._id;
                 response = await EditProject(values);
+                socket.emit("project-updated", {
+                    projectId: project._id,
+                    updatedBy: user._id,
+                    updatedData: values,
+                });
+
             } else {
                 // create project
                 values.owner = user._id;
@@ -30,6 +37,13 @@ const ProjectForm = ({ show, setShow, reloadData, project }) => {
                     },
                 ];
                 response = await CreateProject(values);
+
+                socket.emit("project-created", {
+                    projectId: response.data._id,
+                    owner: user._id,
+                    projectName: response.data.name,
+                });
+
             }
 
             if (response.success) {

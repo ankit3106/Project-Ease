@@ -16,6 +16,27 @@
   letter-spacing: 1px;
 }
 
+.projects-add-button {
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #2e3840 0%, #4b6cb7 100%) !important;
+  color: #fff !important;
+  font-weight: 700;
+  border: none !important;
+  border-radius: 10px !important;
+  padding: 10px 24px !important;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.projects-add-button:hover,
+.projects-add-button:focus {
+  background: linear-gradient(90deg, #4b6cb7 0%, #2e3840 100%) !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.16);
+  transform: scale(1.05);
+}
+
 .home-project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));

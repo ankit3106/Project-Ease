@@ -6,6 +6,7 @@ import { LoginUser } from "../../apicalls/users";
 import { useDispatch, useSelector } from "react-redux";
 import { SetButtonLoading } from "../../redux/loadersSlice";
 import { getAntdFormInputRules } from "../../utils/helpers";
+import { socket } from "../../socket";
 import "./Login.css";
 
 const Login = () => {
@@ -19,8 +20,10 @@ const Login = () => {
             const response = await LoginUser(values);
             dispatch(SetButtonLoading(false));
             if (response.success) {
-                localStorage.setItem("token", response.data.token); // <-- Save the token correctly
+                localStorage.setItem("token", response.data.token);
                 message.success(response.message);
+                // Emit join event using socket.io after successful login
+                socket.emit("join", response.data.user._id);
                 window.location.href = "/";
             } else {
                 throw new Error(response.message);

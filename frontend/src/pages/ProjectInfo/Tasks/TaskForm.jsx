@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AddNotification } from "../../../apicalls/notifications";
 import { CreateTask, UpdateTask, UploadImage } from "../../../apicalls/tasks";
 import { SetLoading } from "../../../redux/loadersSlice";
+import { socket } from "../../../socket";
 import "./TaskForm.css"
 
 
@@ -38,7 +39,7 @@ const TaskForm = ({
             }
             dispatch(SetLoading(true));
             if (task) {
-                // update task
+                // Update task
                 response = await UpdateTask({
                     ...values,
                     project: project._id,
@@ -57,12 +58,23 @@ const TaskForm = ({
 
             if (response.success) {
                 if (!task) {
-                    // send notification to the assigned employee
+                    // Send notification to the assigned employee
                     AddNotification({
                         title: `You have been assigned a new task in ${project.name}`,
                         user: assignedToUserId,
                         onClick: `/project/${project._id}`,
                         description: values.description,
+                    });
+                    // Emit socket event for task creation
+                    socket.emit("task-created", {
+                        projectId: project._id,
+                        task: response.data, // Ensure response contains the created task data
+                    });
+                } else {
+                    // Emit socket event for task update
+                    socket.emit("task-updated", {
+                        projectId: project._id,
+                        task: response.data, // Ensure response contains the updated task data
                     });
                 }
 

@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { AddMemberToProject } from "../../../apicalls/projects";
 import { SetLoading } from "../../../redux/loadersSlice";
 import { getAntdFormInputRules } from "../../../utils/helpers";
+import { socket } from "../../../socket";
 
 const MemberForm = ({
     showMemberForm,
@@ -32,6 +33,11 @@ const MemberForm = ({
                 dispatch(SetLoading(false));
                 if (response.success) {
                     message.success(response.message);
+                    // Emit socket event after successful addition
+                    socket.emit("member-added", {
+                        projectId: project._id,
+                        member: response.data, // ensure your response contains the new member data
+                    });
                     reloadData();
                     setShowMemberForm(false);
                 } else {
