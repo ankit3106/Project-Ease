@@ -102,7 +102,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const authMiddleware = require("../middlewares/authMiddleware");
 
-// 🧾 Register User
+//  Register User
 router.post("/register", async (req, res) => {
   try {
     const userExists = await User.findOne({ email: req.body.email });
@@ -120,7 +120,7 @@ router.post("/register", async (req, res) => {
     const user = new User(req.body);
     await user.save();
 
-    // 🔔 Emit socket event for new registration (optional)
+    //  Emit socket event for new registration (optional)
     const io = req.app.get("io");
     io.emit("user-registered", {
       _id: user._id,
@@ -140,7 +140,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// 🔐 Login User
+//  Login User
 router.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
@@ -170,7 +170,7 @@ router.post("/login", async (req, res) => {
     const userObj = user.toObject();
     delete userObj.password;
 
-    // 🔔 Emit socket event for login (optional)
+    //  Emit socket event for login (optional)
     const io = req.app.get("io");
     io.to(user._id.toString()).emit("user-logged-in", {
       userId: user._id,
@@ -193,7 +193,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// 🧠 Get Logged-In User Info
+//  Get Logged-In User Info
 router.get("/get-logged-in-user", authMiddleware, async (req, res) => {
   try {
     const user = await User.findOne({ _id: req.userId }).select("-password");
