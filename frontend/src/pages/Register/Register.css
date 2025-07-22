@@ -1,0 +1,108 @@
+.register-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #3498db 0%, #2c3e50 100%);
+}
+
+.register-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(44, 62, 80, 0.15);
+  padding: 20px 40px 20px 40px;
+  width: 440px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeIn 0.8s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.register-form-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.register-divider {
+  height: 2px;
+  background: linear-gradient(90deg, #3498db 0%, #2c3e50 100%);
+  border: none;
+  margin: 0 0 16px 0;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.register-form input {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #dbeafe;
+  font-size: 1rem;
+  transition: border 0.2s;
+}
+
+.register-form input:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+.register-button {
+  margin-top: 10px;
+  padding: 12px 0;
+  background: linear-gradient(90deg, #3498db 0%, #2c3e50 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.8s cubic-bezier(0.4,0,0.2,1), box-shadow 0.8s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+}
+
+.register-button:hover {
+  background: linear-gradient(90deg, #2c3e50 0%, #3498db 100%);
+}
+
+.register-link {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+  font-size: 1rem;
+}
+
+.register-link span {
+  margin-right: 5px;
+  color: #555;
+}
+
+.register-link a {
+  color: #3498db;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.register-link a:hover {
+  color: #2c3e50;
+  text-decoration: underline;
+}

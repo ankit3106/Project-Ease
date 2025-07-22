@@ -1,0 +1,62 @@
+.project-form-container {
+  background: #fff;
+  padding: 32px 24px;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(44, 62, 80, 0.10);
+  max-width: 480px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.project-form-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #2e3840;
+  letter-spacing: 0.5px;
+}
+
+.project-form-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: #f6f8fa;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  margin-bottom: 16px;
+}
+
+.project-form-input:focus {
+  border-color: #4b6cb7;
+  box-shadow: 0 0 0 2px rgba(75, 108, 183, 0.15);
+  background: #fff;
+}
+
+.project-form-button {
+  background: linear-gradient(90deg, #2e3840 0%, #4b6cb7 100%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 0;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+}
+
+.project-form-button:hover {
+  background: linear-gradient(90deg, #4b6cb7 0%, #2e3840 100%);
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.16);
+}
+
+.project-form-error {
+  color: #e53e3e;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  margin-top: -8px;
+}

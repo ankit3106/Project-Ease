@@ -1,0 +1,145 @@
+.tasks-container {
+  padding: 32px 24px;
+  background-color: #f7fafc;
+  border-radius: 18px;
+  box-shadow: 0 6px 32px rgba(44, 62, 80, 0.10);
+  margin: 24px 0;
+}
+
+.ant-table {
+  margin-top: 28px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(44, 62, 80, 0.07);
+  overflow: hidden;
+}
+
+.tasks-filters {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 28px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.tasks-filters>div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tasks-filters span {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 2px;
+}
+
+.tasks-filters select {
+  padding: 10px 14px;
+  border: 1.5px solid #dbeafe;
+  border-radius: 8px;
+  background: #f4f8fb;
+  font-size: 1rem;
+  color: #2c3e50;
+  transition: border 0.2s;
+  outline: none;
+}
+
+.task-name{
+  cursor: pointer;
+  color: #4b6cb7;
+  font-weight: 600;
+  transition: color 0.2s;
+  margin-bottom: 2;
+}
+.task-name:hover {
+  color: #2c3e50;
+}
+
+.tasks-filters select:focus {
+  border-color: #3498db;
+}
+
+.add-task-btn {
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #2e3840 0%, #4b6cb7 100%) !important;
+  color: #fff !important;
+  font-weight: 700;
+  border: none !important;
+  border-radius: 10px !important;
+  padding: 10px 24px !important;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.add-task-btn:hover, .add-task-btn:focus {
+  background: linear-gradient(90deg, #4b6cb7 0%, #2e3840 100%) !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.16);
+  transform: scale(1.05);
+}
+
+.task-details-modal .ant-modal-body {
+  padding: 28px 24px;
+  background: #f7fafc;
+  border-radius: 12px;
+}
+
+.task-details-modal img {
+  max-width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border: 1.5px solid #dbeafe;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 14px;
+}
+
+.action-buttons button,
+.action-buttons .ant-btn {
+  border-radius: 7px !important;
+  font-weight: 500;
+  padding: 6px 18px;
+  font-size: 0.98rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.action-buttons .ant-btn-primary {
+  background: #3498db;
+  border: none;
+}
+
+.action-buttons .ant-btn-primary:hover {
+  background: #2c3e50;
+}
+
+.action-buttons .ant-btn-dangerous {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+}
+
+.action-buttons .ant-btn-dangerous:hover {
+  background: #c0392b;
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .tasks-container {
+    padding: 16px 4px;
+  }
+
+  .tasks-filters {
+    flex-direction: column;
+    gap: 16px;
+  }
+}

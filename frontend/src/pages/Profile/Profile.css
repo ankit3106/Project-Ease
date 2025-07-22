@@ -1,0 +1,27 @@
+.profile-container {
+  padding: 32px 24px;
+  background: #f7fafc;
+  border-radius: 18px;
+  box-shadow: 0 6px 32px rgba(44, 62, 80, 0.10);
+  margin: 24px 0;
+}
+
+.profile-tabs .ant-tabs-tab {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.profile-tabs .ant-tabs-tab-active {
+  color: #3498db !important;
+}
+
+.profile-tabs .ant-tabs-ink-bar {
+  background: #3498db;
+}
+
+@media (max-width: 900px) {
+  .profile-container {
+    padding: 12px 2px;
+  }
+}
