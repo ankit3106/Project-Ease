@@ -8,9 +8,9 @@ import { SetLoading } from "../redux/loadersSlice";
 import { GetAllNotifications } from "../apicalls/notifications";
 import { Avatar, Badge, Space } from "antd";
 import { BellOutlined } from "@ant-design/icons";
+import { socket } from "../socket";
 import Notifications from "./Notifications";
 import "./ProtectedPage.css"
-import NotificationIcon from "../assets/notif_icon.jpg"
 
 function ProtectedPage({ children }) {
     const [showNotifications, setShowNotifications] = useState(false);
@@ -62,6 +62,7 @@ function ProtectedPage({ children }) {
     useEffect(() => {
         if (user) {
             getNotifications();
+            socket.emit("join", user._id); 
         }
     }, [user]);
 

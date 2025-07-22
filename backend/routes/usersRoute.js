@@ -95,3 +95,4 @@ router.get("/get-logged-in-user", authMiddleware, async (req, res) => {
 });
 
 module.exports = router;
+

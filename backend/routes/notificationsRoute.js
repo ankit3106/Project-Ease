@@ -40,7 +40,7 @@ router.post("/mark-as-read", authMiddleware, async (req, res) => {
   try {
     await Notification.updateMany(
       {
-        user: req.userId,
+        user: req.userId, 
         read: false,
       },
       {
@@ -48,7 +48,7 @@ router.post("/mark-as-read", authMiddleware, async (req, res) => {
       }
     );
     const notifications = await Notification.find({
-      user: req.userId, 
+      user: req.userId,
     }).sort({ createdAt: -1 });
     res.send({
       success: true,
@@ -82,3 +82,4 @@ router.delete("/delete-all-notifications", authMiddleware, async (req, res) => {
 
 
 module.exports = router;
+

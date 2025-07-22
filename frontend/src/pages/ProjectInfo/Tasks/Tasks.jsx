@@ -7,6 +7,8 @@ import { getDateFormat } from "../../../utils/helpers";
 import Divider from "../../../components/Divider";
 import TaskForm from "./TaskForm";
 import { AddNotification } from "../../../apicalls/notifications";
+import { useNavigate } from "react-router-dom";
+import { socket } from "../../../socket";
 import "./Tasks.css";
 
 
@@ -55,6 +57,7 @@ const Tasks = ({ project }) => {
             if (response.success) {
                 getTasks();
                 message.success(response.message);
+                socket.emit("task-deleted", { projectId: project._id, taskId: id });
             } else {
                 throw new Error(response.message);
             }
@@ -75,6 +78,8 @@ const Tasks = ({ project }) => {
             if (response.success) {
                 getTasks();
                 message.success(response.message);
+                socket.emit("task-updated", { projectId: project._id, task: response.data });
+
                 AddNotification({
                     title: "Task Status Updated",
                     description: `${task.name} status has been updated to ${status}`,
@@ -91,9 +96,36 @@ const Tasks = ({ project }) => {
         }
     };
 
-    React.useEffect(() => {
-        getTasks();
-    }, []);
+    useEffect(() => {
+        const handleTaskCreated = (data) => {
+            if (data.projectId === project._id) {
+                getTasks();
+            }
+        };
+
+        const handleTaskUpdated = (data) => {
+            if (data.projectId === project._id) {
+                getTasks();
+            }
+        };
+
+        const handleTaskDeleted = (data) => {
+            if (data.projectId === project._id) {
+                getTasks();
+            }
+        };
+
+        socket.on("task-created", handleTaskCreated);
+        socket.on("task-updated", handleTaskUpdated);
+        socket.on("task-deleted", handleTaskDeleted);
+
+        return () => {
+            socket.off("task-created", handleTaskCreated);
+            socket.off("task-updated", handleTaskUpdated);
+            socket.off("task-deleted", handleTaskDeleted);
+        };
+    }, [project._id]);
+
 
     const columns = [
         {

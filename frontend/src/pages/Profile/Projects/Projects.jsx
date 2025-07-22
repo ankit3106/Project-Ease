@@ -1,5 +1,5 @@
 import { Button, message, Table, Tooltip, Modal } from "antd";
-import React from "react";
+import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DeleteProject, GetAllProjects } from "../../../apicalls/projects";
 import { SetLoading } from "../../../redux/loadersSlice";
@@ -7,14 +7,15 @@ import { getDateFormat } from "../../../utils/helpers";
 import ProjectForm from "./ProjectForm";
 import { useNavigate } from "react-router-dom";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons"
+import { socket } from "../../../socket";
 import "./Projects.css";
 
 
 const Projects = () => {
 
-    const [selectedProject, setSelectedProject] = React.useState(null);
-    const [projects, setProjects] = React.useState([]);
-    const [show, setShow] = React.useState(false);
+    const [selectedProject, setSelectedProject] = useState(null);
+    const [projects, setProjects] = useState([]);
+    const [show, setShow] = useState(false);
     const { user } = useSelector((state) => state.users);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -42,6 +43,7 @@ const Projects = () => {
             if (response.success) {
                 message.success(response.message);
                 getData();
+                socket.emit("project-deleted", { projectId: id });
             } else {
                 throw new Error(response.error);
             }
@@ -52,8 +54,19 @@ const Projects = () => {
         }
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         getData();
+        if (user?._id) {
+            socket.emit("join", user._id); // Join room to receive real-time updates
+        }
+        socket.on("project-updated", (data) => {
+            // Optionally, check data.type if necessary and update state
+            getData();  // refresh the list when a project update event is received
+        });
+
+        return () => {
+            socket.off("project-updated");
+        };
     }, []);
 
     const columns = [

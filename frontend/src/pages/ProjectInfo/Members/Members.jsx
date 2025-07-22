@@ -3,6 +3,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RemoveMemberFromProject } from "../../../apicalls/projects";
 import { SetLoading } from "../../../redux/loadersSlice";
+import { socket } from "../../../socket";
 import MemberForm from "./MemberForm";
 import "./Members.css";
 
@@ -16,6 +17,7 @@ const Members = ({ project, reloadData }) => {
 
     const dispatch = useDispatch();
     const isOwner = project.owner._id === user._id;
+
     const deleteMember = async (memberId) => {
         try {
             dispatch(SetLoading(true));
@@ -26,6 +28,11 @@ const Members = ({ project, reloadData }) => {
             if (response.success) {
                 reloadData();
                 message.success(response.message);
+                // Emit socket event to notify other clients of member removal
+                socket.emit("member-removed", {
+                    projectId: project._id,
+                    memberId,
+                });
             } else {
                 throw new Error(response.message);
             }
