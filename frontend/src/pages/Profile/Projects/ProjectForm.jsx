@@ -1,4 +1,4 @@
-import { Form, Input, message, Modal } from "antd";
+import { Form, Input, message, Modal, Select } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,6 +23,7 @@ const ProjectForm = ({ show, setShow, reloadData, project }) => {
             } else {
                 // create project
                 values.owner = user._id;
+                values.status = values.status || "active"; // Set default status if not provided
                 values.members = [
                     {
                         user: user._id,
@@ -62,7 +63,10 @@ const ProjectForm = ({ show, setShow, reloadData, project }) => {
                 layout="vertical"
                 ref={formRef}
                 onFinish={onFinish}
-                initialValues={project}
+                initialValues={{
+                    ...project,
+                    status: project ? project.status : "active"
+                }}
                 className="project-form-container"
             >
                 <Form.Item
@@ -91,6 +95,19 @@ const ProjectForm = ({ show, setShow, reloadData, project }) => {
                         className="project-form-input"
                         autoSize={{ minRows: 3, maxRows: 5 }}
                     />
+                </Form.Item>
+                <Form.Item
+                    label="Project Status"
+                    name="status"
+                    className="project-form-label"
+                    rules={[
+                        { required: true, message: "Please select the project status" },
+                    ]}
+                >
+                    <select className="project-form-input">
+                        <option value="active">Active</option>
+                        <option value="completed">Completed</option>
+                    </select>
                 </Form.Item>
             </Form>
         </Modal>
