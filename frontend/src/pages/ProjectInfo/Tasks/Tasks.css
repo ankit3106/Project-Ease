@@ -44,6 +44,7 @@
   color: #2c3e50;
   transition: border 0.2s;
   outline: none;
+  cursor: pointer;
 }
 
 .task-name{
