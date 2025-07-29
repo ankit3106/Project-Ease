@@ -24,21 +24,25 @@ router.post("/create-project", authMiddleware, async (req, res) => {
 });
 
 router.post("/get-all-projects", authMiddleware, async (req, res) => {
-  try {
-    const projects = await Project.find({
-      owner: req.userId,
-    }).sort({ createdAt: -1 })
-      .populate("owner");
-    res.status(200).send({
-      success: true,
-      data: projects,
-    });
-  } catch (error) {
-    res.status(500).send({
-      success: false,
-      message: error.message,
-    });
-  }
+    try {
+        // Remove any filters set to "all"
+        Object.keys(req.body).forEach((key) => {
+            if (req.body[key] === "all") {
+                delete req.body[key];
+            }
+        });
+
+        const projects = await Project.find(req.body);
+        res.status(200).send({
+            success: true,
+            data: projects,
+        });
+    } catch (error) {
+        res.status(500).send({
+            success: false,
+            message: error.message,
+        });
+    }
 });
 
 router.post("/get-project-by-id", authMiddleware, async (req, res) => {

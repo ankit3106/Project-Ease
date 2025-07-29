@@ -15,6 +15,9 @@ const Projects = () => {
     const [selectedProject, setSelectedProject] = React.useState(null);
     const [projects, setProjects] = React.useState([]);
     const [show, setShow] = React.useState(false);
+    const [filters, setFilters] = React.useState({
+        status: "all"
+    });
     const { user } = useSelector((state) => state.users);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -22,7 +25,11 @@ const Projects = () => {
     const getData = async () => {
         try {
             dispatch(SetLoading(true));
-            const response = await GetAllProjects({ owner: user._id });
+            const response = await GetAllProjects({ 
+                owner: user._id,
+                ...filters
+                // status: filters.status === "all" ? "" : filters.status
+            });
             if (response.success) {
                 setProjects(response.data);
             } else {
@@ -54,7 +61,7 @@ const Projects = () => {
 
     React.useEffect(() => {
         getData();
-    }, []);
+    }, [filters]);
 
     const columns = [
         {
@@ -126,6 +133,25 @@ const Projects = () => {
                 >
                     Add Project
                 </Button>
+            </div>
+            <div className="projects-filters" style={{ marginTop: "1rem", marginBottom: "1rem" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                    <span>Status:</span>
+                    <select
+                        value={filters.status}
+                        onChange={(e) => {
+                            setFilters({
+                                ...filters,
+                                status: e.target.value,
+                            });
+                        }}
+                        style={{ padding: "4px 8px", borderRadius: "4px" }}
+                    >
+                        <option value="all">All</option>
+                        <option value="active">Active</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
             </div>
             <Table columns={columns} dataSource={projects} className="projects-table" rowKey="_id" />            {show && (
                 <ProjectForm

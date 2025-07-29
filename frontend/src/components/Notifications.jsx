@@ -12,12 +12,16 @@ function Notifications({ showNotifications, setShowNotifications }) {
     const { notifications } = useSelector((state) => state.users);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
     const readNotifications = async () => {
         try {
             const response = await MarkNotificationAsRead();
             if (response.success) {
-                console.log(response.data);
+                // console.log(response.data);
                 dispatch(SetNotifications(response.data));
+            }
+            else{
+                throw new Error(response.message);
             }
         } catch (error) {
             message.error(error.message);
@@ -41,10 +45,13 @@ function Notifications({ showNotifications, setShowNotifications }) {
     };
 
     useEffect(() => {
-        if (notifications.length > 0) {
+        if (showNotifications && notifications.length > 0) {
             readNotifications();
         }
-    }, [notifications]);
+        return () => {
+            dispatch(SetLoading(false));
+        };
+    }, [showNotifications]);
 
     return (
         <Modal
