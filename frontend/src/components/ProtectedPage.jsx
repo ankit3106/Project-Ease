@@ -3,20 +3,21 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { GetLoggedInUser } from "../apicalls/users";
+import { GetAllNotifications } from "../apicalls/notifications";
 import { SetNotifications, SetUser } from "../redux/usersSlice";
 import { SetLoading } from "../redux/loadersSlice";
-import { GetAllNotifications } from "../apicalls/notifications";
 import { Avatar, Badge, Space } from "antd";
 import { BellOutlined } from "@ant-design/icons";
 import Notifications from "./Notifications";
 import "./ProtectedPage.css"
-import NotificationIcon from "../assets/notif_icon.jpg"
 
 function ProtectedPage({ children }) {
     const [showNotifications, setShowNotifications] = useState(false);
+    const { user, notifications } = useSelector((state) => state.users);
+    
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { user, notifications } = useSelector((state) => state.users);
+
     const getUser = async () => {
         try {
             dispatch(SetLoading(true));
