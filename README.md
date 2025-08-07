@@ -21,9 +21,6 @@ Project-Ease is a modern, scalable project management application built using Mo
 - **Project & Task Management**  
   Create, update, assign, and prioritize projects and tasks. Full CRUD support.
 
-- **User Invitations**  
-  Easily invite team members to projects via email.
-
 - **Task Prioritization & Filtering**  
   Interactive dashboard to filter/sort tasks by priority, status, and assignee.
 
