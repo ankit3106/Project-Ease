@@ -54,6 +54,7 @@ Project-Ease is a modern, scalable project management application built using Mo
 
 ### Dashboard & Projects
 
+<img width="1920" height="1080" alt="Screenshot (39)" src="https://github.com/user-attachments/assets/35467665-c300-4d7a-adad-806707104973" />
 
 
 ### Tasks & Notifications
