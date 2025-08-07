@@ -50,17 +50,23 @@ Project-Ease is a modern, scalable project management application built using Mo
 
 ### Login & Registration
 
+<img width="1920" height="950" alt="Screenshot (55)" src="https://github.com/user-attachments/assets/118e6b64-caa5-4778-a302-77640a7d5bf4" />
 
+<img width="1920" height="946" alt="Screenshot (54)" src="https://github.com/user-attachments/assets/421543d1-047d-4ac4-a87e-7dd3b4075a97" />
 
 ### Dashboard & Projects
 
-<img width="1920" height="1080" alt="Screenshot (39)" src="https://github.com/user-attachments/assets/35467665-c300-4d7a-adad-806707104973" />
 
+<img width="1920" height="927" alt="Screenshot (39)" src="https://github.com/user-attachments/assets/f2595a64-bbdc-441a-8dda-2a514d88581d" />
+
+<img width="1920" height="955" alt="Screenshot (60)" src="https://github.com/user-attachments/assets/1d6ba9e0-292e-4e07-bcf6-79644b474591" />
 
 ### Tasks & Notifications
 
 
----
+---<img width="1920" height="946" alt="Screenshot (61)" src="https://github.com/user-attachments/assets/c9ae7fa3-d37b-43e4-9946-3009a4fd0346" />
+<img width="1920" height="950" alt="Screenshot (56)" src="https://github.com/user-attachments/assets/16554fde-36e8-4a8e-afda-07e6a0659a4e" />
+
 
 ## 🚦 Getting Started
 
